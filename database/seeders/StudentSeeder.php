@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker;
 use Illuminate\Support\Str;
+use App\Helpers\Utilities;
 
 class StudentSeeder extends Seeder
 {
