@@ -27,15 +27,15 @@ class StudentSeeder extends Seeder
                 'roll_no' => Str::random(6),
                 'gender' => $faker->randomElement(['Male', 'Female']),
                 'dob' => $faker->date(),
-                'nrc' => generateNRC(),
+                'nrc' => Utilities::generateNRC()
             ]);
             if ($student->gender === 'Male') {
                 $student->update([
-                    'name' => generateMaleName(),
+                    'name' => Utilities::generateMaleName(),
                 ]);
             } else {
                 $student->update([
-                    'name' => generateFemaleName(),
+                    'name' => Utilities::generateFemaleName(),
                 ]);
             }
         }
