@@ -19,3 +19,4 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [PageController::class, 'index'])->name('students');
+Route::post('/students', [PageController::class, 'store'])->name('student.create');
