@@ -19958,7 +19958,9 @@ var _hoisted_3 = {
   "class": "w-full whitespace-nowrap border-none"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TabsWrapper"], {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
+    title: 'Welcome'
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TabsWrapper"], {
     onChangeTab: $setup.tabChange,
     selectedTabSlug: $setup.form.tab
   }, {

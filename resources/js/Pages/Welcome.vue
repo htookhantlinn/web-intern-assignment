@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Head :title="'Welcome'" />
     <TabsWrapper @changeTab="tabChange" :selectedTabSlug="form.tab">
       <Tab :title="`Welcome`" :slug="'welcome'">
         <div class="flex h-96">
