@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Student extends Model
 {
@@ -25,5 +26,13 @@ class Student extends Model
     public function scopeOrderByName($query)
     {
         $query->orderBy('name');
+    }
+    public function scopeFilter($query, array $filters)
+    {
+        $query
+            ->when($filters['search'] ?? null, function ($query, $search) {
+                $query->where(DB::raw('lower(name)'), "LIKE", "%" . strtolower($search) . "%")
+                    ->orWhere('email', 'LIKE', "%{$search}%");
+            });
     }
 }

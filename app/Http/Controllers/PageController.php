@@ -17,14 +17,17 @@ class PageController extends Controller
     //
     public function index(Request $request)
     {
-        $students = StudentResource::collection(Student::query()->orderByName()->paginate(7));
+        $students = StudentResource::collection(Student::query()->filter(FacadesRequest::only('search'))->orderByName()->paginate(7));
         $courses = Course::all();
         if ($request->tab) {
             $students->appends(['tab' => $request->tab])->links();
         }
+        if ($request->search) {
+            $students->appends(['search' => $request->search])->links();
+        }
         return Inertia::render('Welcome', [
             'students' => $students,
-            'filters' => FacadesRequest::all('tab'),
+            'filters' => FacadesRequest::all('tab', 'search'),
             'courses' => $courses
         ]);
     }
@@ -34,7 +37,7 @@ class PageController extends Controller
 
         $data =  $request->validate([
             'name' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:students'],
+            'email' => ['required', 'string', 'email', 'max:30', 'unique:students'],
             'gender' => ['required'],
             'dob' => ['required'],
             'nrc' => ['required'],
