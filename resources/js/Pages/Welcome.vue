@@ -355,7 +355,6 @@ let changeDistrict = (e) => {
   townships.value = nrcs.value.filter((n) => {
     return n.nrc_code === e.target.value ? n.name_en : "";
   });
-  console.log(townships.value);
 };
 let store = () => {
   if (
@@ -368,11 +367,15 @@ let store = () => {
   } else {
     studentForm.nrc = null;
   }
-  console.log(studentForm.nrc);
   studentForm.post("/students", {
     preserveScroll: true,
-    onSuccess: () =>
-      studentForm.reset("name", "email", "gender", "nrc", "dob", "courses"),
+    onSuccess: () => {
+      studentForm.reset("name", "email", "gender", "nrc", "dob", "courses");
+      nrc.value.district = null;
+      nrc.value.township = null;
+      nrc.value.type = null;
+      nrc.value.number = null;
+    },
   });
 };
 

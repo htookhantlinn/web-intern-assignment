@@ -21827,7 +21827,6 @@ __webpack_require__.r(__webpack_exports__);
       townships.value = nrcs.value.filter(function (n) {
         return n.nrc_code === e.target.value ? n.name_en : "";
       });
-      console.log(townships.value);
     };
 
     var store = function store() {
@@ -21837,11 +21836,14 @@ __webpack_require__.r(__webpack_exports__);
         studentForm.nrc = null;
       }
 
-      console.log(studentForm.nrc);
       studentForm.post("/students", {
         preserveScroll: true,
         onSuccess: function onSuccess() {
-          return studentForm.reset("name", "email", "gender", "nrc", "dob", "courses");
+          studentForm.reset("name", "email", "gender", "nrc", "dob", "courses");
+          nrc.value.district = null;
+          nrc.value.township = null;
+          nrc.value.type = null;
+          nrc.value.number = null;
         }
       });
     };
